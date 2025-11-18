@@ -3,15 +3,18 @@ package db
 import (
 	"context"
 	"log"
+	"os"
 
 	"github.com/jackc/pgx/v5/pgxpool"
+	"github.com/joho/godotenv"
 )
 
 var Pool *pgxpool.Pool
 
 func Connect() {
-	// connStr := os.Getenv("DATABASE_URL") // e.g. "postgres://lifeapp_user:password@localhost:5432/lifeapp_db"
-	connStr := "postgres://lifeapp_user:lifeapp@localhost:5433/lifeapp_db"
+	godotenv.Load("../../.env")
+	connStr := os.Getenv("DATABASE_URL")
+
 	pool, err := pgxpool.New(context.Background(), connStr)
 	if err != nil {
 		log.Fatalf("Unable to connect to DB: %v\n", err)
