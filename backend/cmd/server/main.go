@@ -5,15 +5,14 @@ import (
 	"net/http"
 
 	"lifeapp/internal/db"
-	"lifeapp/internal/handlers"
+	"lifeapp/internal/test"
 )
 
 func main() {
 	db.Connect()
 
 	mux := http.NewServeMux()
-	mux.HandleFunc("/tests", handlers.AddTestHandler)
-	// mux.HandleFunc("/tests/", handlers.TestGet)
+	mux.HandleFunc("/tests", test.AddTestHandler)
 
 	log.Println("Server running on :8080")
 

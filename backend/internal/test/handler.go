@@ -1,9 +1,7 @@
-package handlers
+package test
 
 import (
 	"encoding/json"
-	"lifeapp/internal/models"
-	"lifeapp/internal/services"
 	"net/http"
 )
 
@@ -13,14 +11,14 @@ func AddTestHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var test models.Test
+	var test Test
 	err := json.NewDecoder(r.Body).Decode(&test)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 
-	err = services.TestAdd(test)
+	err = TestAdd(test)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return

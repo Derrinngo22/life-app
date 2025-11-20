@@ -1,16 +1,15 @@
-package services
+package journal
 
 import (
 	"context"
 	"lifeapp/internal/db"
-	"lifeapp/internal/models"
 	"log"
 )
 
-func TestAdd(test models.Test) error {
+func AddJournalEntry(journal JournalEntry) error {
 	query := `INSERT INTO tests (name) VALUES ($1)`
 
-	_, err := db.Pool.Exec(context.Background(), query, test.Name)
+	_, err := db.Pool.Exec(context.Background(), query, journal.ID)
 	if err != nil {
 		log.Println(err)
 		return err
