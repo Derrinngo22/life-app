@@ -11,3 +11,6 @@ Planned Features:
     - Changeable fields
 - Morning "newsletter"
     - Goal/Habit focus reminders
+
+test Post curl: curl -X POST http://localhost:8080/tests -H "Content-Type: application/json" -d "{\"name\":\"Meditate\"}"
+journal Post curl: curl -X POST http://localhost:8080/journal -H "Content-Type: application/json" -d "{ \"user_id\": \"your mom\", \"category\": \"ooga booga\", \"data\": {\"sleep\": \"1234\", \"notes\": \"sup\"} }"
